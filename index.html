@@ -8,23 +8,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class="navbar bg-dark navbar-dark sticky-top">
   ...
 </nav>
     
     <main id="main-content" >
         <section id="gift-scene" class="scene">
             <h1>Welcome!</h1> 
-            <h4>Click here to open your gift</h4>
-            <img src="/assets/Gift.gif" id="gift-box" alt="Gift Box" style="width:128px;height:128px;">
+            <h4>Click the gift to open</h4>
+            <img src="assets/Gift.gif" id="gift-box" alt="Gift Box" style="width:128px;height:128px;">
         </section>
         <section id="card-scene" class="scene hidden">
-            <h1>Welcome to Card Scene!</h1> 
+            <div class="card-wrapper">
+
+            <div class="birthday-card" id="birthday-card">
+
+                <!-- MESSAGE PAGE -->
+                <div class="message-page">
+
+                    <h2>Happy Birthday 🎉</h2>
+
+                    <p>
+                        Wishing you happiness,
+                        laughter, and beautiful memories 💖
+                    </p>
+
+                </div>
+
+                <!-- COVER -->
+                <div class="card-cover">
+
+                    <!-- FRONT -->
+                    <div class="cover-front">
+
+                        <h1>For You 💌</h1>
+
+                    </div>
+
+                    <!-- BACK -->
+                    <div class="cover-back">
+
+                        <h2>💖</h2>
+
+                        <p>
+                            A small letter for someone special ✨
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
         </section>
-        <section id="cake-scene" class="scene hidden"></section>
+        <section id="cake-scene" class="scene hidden">
+            <h1>Welcome to Cake Scene!</h1> 
+        </section>
     </main>
     
-    <footer class="fixed-bottom bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-3">
         <div class="container">
             <span>Created by: KC</span>
         </div>

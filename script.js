@@ -6,9 +6,29 @@ const cardScene = document.getElementById("card-scene");
 
 giftBox.addEventListener("click", () => {
 
-    //Hide Gift Scene
-    giftScene.classList.add("hidden");
+    // Fade out Scene 1
+    giftScene.classList.add("fade-out");
 
-    //Show Card Scene
-    cardScene.classList.remove("hidden");
+    setTimeout(() => {
+
+        // Hide Scene 1
+        giftScene.classList.add("hidden");
+
+        // Show Scene 2
+        cardScene.classList.remove("hidden");
+
+        // Fade in Scene 2
+        cardScene.classList.add("fade-in");
+
+        // AUTO OPEN CARD AFTER 3 SECONDS
+        setTimeout(() => {
+
+            birthdayCard.classList.add("open");
+
+        }, 3000);
+
+    }, 800);
+
 });
+
+const birthdayCard = document.getElementById("birthday-card");
