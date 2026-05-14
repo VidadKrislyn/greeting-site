@@ -266,3 +266,226 @@ footer span{
 .birthday-card.open{
     transform: translateX(0);
 }
+
+.hidden-btn{
+    position: absolute;
+
+    bottom: 20px;
+    right: 25px;
+
+    background: transparent;
+    border: none;
+
+    color: rgba(60,9,108,0.7);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease,
+        transform 0.3s ease,
+        color 0.3s ease;
+
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+/* Show */
+.hidden-btn.show{
+    opacity: 1;
+}
+
+/* Hover */
+.hidden-btn:hover{
+    transform: translateY(-2px);
+
+    color: #3C096C;
+}
+
+/* Cake Scene Styles */
+
+/* Birthday Title */
+.birthday-title{
+    margin-bottom:40px;
+
+    font-size:48px;
+
+    text-shadow:0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Cake Container */
+.cake-container{
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+}
+
+/* Candles Row */
+.candles{
+    display:flex;
+    gap:40px;
+
+    margin-bottom:-10px;
+
+    z-index:5;
+}
+/* Candle */
+.candle{
+    width:15px;
+    height:80px;
+
+    background:#ff85a1;
+
+    border-radius:10px;
+
+    position:relative;
+}
+
+/* Flame */
+.flame{
+    width:20px;
+    height:30px;
+
+    background:gold;
+
+    border-radius:50% 50% 50% 50%;
+
+    position:absolute;
+
+    top:-30px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    animation:flicker 0.15s infinite alternate;
+
+    box-shadow:
+        0 0 20px gold,
+        0 0 40px orange;
+}
+
+/* Flicker Animation */
+@keyframes flicker{
+    from{
+        transform:translateX(-50%) scale(1);
+    }
+
+    to{
+        transform:translateX(-50%) scale(1.1);
+    }
+}
+
+/* Cake */
+.cake{
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+}
+
+/* Cake Top */
+.cake-top{
+    width:260px;
+    height:40px;
+
+    background:#ffccd5;
+
+    border-radius:20px;
+
+    z-index:2;
+}
+
+/* Cake Body */
+.cake-body{
+    width:300px;
+    height:180px;
+
+    background:#ff8fab;
+
+    border-radius:20px;
+
+    margin-top:-10px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Blowing Candles */
+#blow-btn{
+    margin-top:40px;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#7B2CBF;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+#blow-btn:hover{
+    transform:scale(1.05);
+}
+
+.smoke{
+    width:20px;
+    height:20px;
+
+    background:rgba(200,200,200,0.7);
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:-30px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    filter:blur(5px);
+}
+
+.flame.out{
+    opacity:0;
+
+    transition:0.5s ease;
+}
+
+.smoke.active{
+    animation:smokeUp 2s ease forwards;
+}
+
+@keyframes smokeUp{
+
+    0%{
+        opacity:0.8;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateX(-50%)
+            translateY(-50px)
+            scale(2);
+    }
+}

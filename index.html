@@ -32,6 +32,9 @@
                         Wishing you happiness,
                         laughter, and beautiful memories 💖
                     </p>
+                    <button id="continue-btn" class="hidden-btn">
+                        Click to Continue
+                    </button>
 
                 </div>
 
@@ -63,7 +66,55 @@
         </div>
         </section>
         <section id="cake-scene" class="scene hidden">
-            <h1>Welcome to Cake Scene!</h1> 
+            <h1 class="birthday-title">
+                Happy Birthday 🎉
+            </h1>
+
+            <div class="cake-container">
+
+                <!-- CANDLES -->
+                <div class="candles">
+
+                    <div class="candle">
+
+                        <div class="flame"></div>
+
+                        <div class="smoke"></div>
+
+                    </div>
+
+                    <div class="candle">
+
+                        <div class="flame"></div>
+
+                        <div class="smoke"></div>
+
+                    </div>
+
+                    <div class="candle">
+
+                        <div class="flame"></div>
+
+                        <div class="smoke"></div>
+
+                    </div>
+
+                </div>
+
+                <!-- CAKE -->
+                <div class="cake">
+
+                    <div class="cake-top"></div>
+
+                    <div class="cake-body"></div>
+
+                </div>
+
+                <button id="blow-btn">
+                    Blow Candles 🎤
+                </button>
+
+            </div>
         </section>
     </main>
     
@@ -73,7 +124,12 @@
         </div>
     </footer>
 
+    <audio id="birthday-song-1" src="assets/Song1.mp3"></audio>
+    <audio id="clap-sound" src="assets/Clapping.mp3"></audio>
+    <audio id="birthday-song-2" src="assets/Song2.mp3"></audio>
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
