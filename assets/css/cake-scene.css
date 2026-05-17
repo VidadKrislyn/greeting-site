@@ -1,0 +1,483 @@
+/* =========================================
+   BIRTHDAY TITLE
+========================================= */
+
+.birthday-title{
+    font-size:48px;
+    text-shadow:0 0 20px rgba(255,255,255,0.5);
+
+    margin-top:20px;
+    margin-bottom:auto; /* pushes cake down */
+
+    flex-shrink:0;
+}
+
+/* =========================================
+   CAKE CONTAINER
+========================================= */
+
+.cake-container{
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    height:70vh;
+}
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    position:relative;
+
+    margin-top:auto; /* THIS forces cake to bottom */
+    margin-bottom:40px;
+}
+/* =========================================
+   CAKE LAYERS
+========================================= */
+
+.cake-layer{
+    position:relative;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
+
+    overflow:hidden;
+}
+
+/* =========================================
+   DROP ANIMATION APPLIED
+========================================= */
+
+.layer-top{
+    width:190px;
+    height:80px;
+
+    background:#ff99cc;
+
+    margin-bottom:-10px;
+
+    z-index:3;
+
+    animation:layerDrop 0.8s ease forwards;
+    animation-delay:1.6s;
+
+    opacity:0;
+}
+
+.layer-middle{
+    width:260px;
+    height:85px;
+
+    background:#ff80c1;
+
+    margin-bottom:-10px;
+
+    z-index:2;
+
+    animation:layerDrop 0.8s ease forwards;
+    animation-delay:0.8s;
+
+    opacity:0;
+}
+
+.layer-bottom{
+    width:340px;
+    height:90px;
+
+    background:#ff66b3;
+
+    z-index:1;
+
+    animation:layerDrop 0.8s ease forwards;
+    animation-delay:0s;
+
+    opacity:0;
+}
+
+/* =========================================
+   DROP ANIMATION
+========================================= */
+
+@keyframes layerDrop{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translateY(-250px);
+    }
+
+    70%{
+        opacity:1;
+
+        transform:
+            translateY(15px);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+/* =========================================
+   FROSTING
+========================================= */
+
+.frosting{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:28px;
+
+    background:#ffe8d6;
+
+    border-radius:20px 20px 10px 10px;
+}
+
+/* Drips */
+.frosting::before,
+.frosting::after{
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+    height:45px;
+
+    background:#ffe8d6;
+
+    border-radius:20px;
+
+    top:12px;
+}
+
+.frosting::before{
+    left:25%;
+}
+
+.frosting::after{
+    right:25%;
+}
+
+/* Frosting Animation */
+@keyframes frostingAppear{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+/* =========================================
+   SPRINKLES
+========================================= */
+
+.sprinkles{
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    animation:
+        sprinklesPop 0.5s ease forwards;
+
+    animation-delay:3s;
+}
+
+/* Sprinkle Dots */
+.sprinkles::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(circle,#ffd60a 4px,transparent 5px),
+        radial-gradient(circle,#00d1b2 4px,transparent 5px),
+        radial-gradient(circle,#ff4fa3 4px,transparent 5px);
+
+    background-size:
+        40px 40px;
+
+    background-position:
+        10px 10px,
+        25px 25px,
+        5px 35px;
+}
+
+/* Sprinkle Animation */
+@keyframes sprinklesPop{
+
+    0%{
+        opacity:0;
+
+        transform:scale(0);
+    }
+
+    100%{
+        opacity:1;
+
+        transform:scale(1);
+    }
+
+}
+
+/* =========================================
+   CANDLES
+========================================= */
+
+.candles{
+    position:absolute;
+
+    top:-80px; /* sits above cake */
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:40px;
+
+    z-index:20;
+
+    opacity:0;
+
+    animation:candlesDrop 0.8s ease forwards;
+    animation-delay:3.6s;
+}
+
+/* Candle Animation */
+@keyframes candlesDrop{
+    0%{
+        opacity:0;
+        transform:translateX(-50%) translateY(-20px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateX(-50%) translateY(0);
+    }
+}
+
+/* =========================================
+   CANDLE
+========================================= */
+
+.candle{
+    width:15px;
+    height:80px;
+
+    position:relative;
+
+    border-radius:10px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #ff85a1 0px,
+            #ff85a1 8px,
+            #ffffff 8px,
+            #ffffff 16px
+        );
+}
+
+/* =========================================
+   FLAME
+========================================= */
+
+.flame{
+    width:20px;
+    height:30px;
+
+    background:gold;
+
+    position:absolute;
+
+    top:-30px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:
+        50% 50% 50% 50%;
+
+    box-shadow:
+        0 0 20px gold,
+        0 0 40px orange;
+
+    opacity:0;
+
+    animation:
+        flameAppear 0.5s ease forwards,
+        flicker 0.15s infinite alternate;
+
+    animation-delay:
+        4.5s,
+        5s;
+}
+
+/* Flame Appear */
+@keyframes flameAppear{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateX(-50%)
+            scale(0);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+}
+
+/* Flicker */
+@keyframes flicker{
+
+    from{
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            scale(1.1);
+    }
+
+}
+
+/* =========================================
+   SMOKE
+========================================= */
+
+.smoke{
+    width:20px;
+    height:20px;
+
+    background:
+        rgba(200,200,200,0.7);
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:-30px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    filter:blur(5px);
+}
+
+/* Flame Out */
+.flame.out{
+    opacity:0 !important;
+
+    transform:
+        translateX(-50%)
+        translateY(10px)
+        scale(0.2);
+
+    box-shadow:none !important;
+    animation:none !important;
+
+    filter:blur(2px);
+
+    transition:0.5s ease;
+}
+
+/* Smoke Active */
+.smoke.active{
+    animation:
+        smokeUp 2s ease forwards;
+}
+
+/* Smoke Animation */
+@keyframes smokeUp{
+
+    0%{
+        opacity:0.8;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translateX(-50%)
+            translateY(-50px)
+            scale(2);
+    }
+
+}
+
+/* =========================================
+   BLOW BUTTON
+========================================= */
+
+#blow-btn{
+    margin-top:40px;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:white;
+
+    color:#7B2CBF;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+#blow-btn:hover{
+    transform:scale(1.05);
+}

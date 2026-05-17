@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gift</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/stars.css">
+    <link rel="stylesheet" href="assets/css/gift-scene.css">
+    <link rel="stylesheet" href="assets/css/card-scene.css">
+    <link rel="stylesheet" href="assets/css/cake-scene.css">
 </head>
 <body>
+
+    <div class="stars">
+
+        <!-- BIG STARS -->
+        <div class="star big s1"></div>
+        <div class="star big s2"></div>
+        <div class="star big s3"></div>
+        <div class="star big s4"></div>
+        <div class="star big s5"></div>
+        <div class="star big s6"></div>
+
+        <!-- SMALL DOT STARS -->
+        <div class="star-dot d1"></div>
+        <div class="star-dot d2"></div>
+        <div class="star-dot d3"></div>
+        <div class="star-dot d4"></div>
+        <div class="star-dot d5"></div>
+        <div class="star-dot d6"></div>
+        <div class="star-dot d7"></div>
+        <div class="star-dot d8"></div>
+        <div class="star-dot d9"></div>
+        <div class="star-dot d10"></div>
+        <div class="star-dot d11"></div>
+        <div class="star-dot d12"></div>
+
+    </div>
+
     <nav class="navbar bg-dark navbar-dark sticky-top">
   ...
 </nav>
@@ -72,47 +103,68 @@
 
             <div class="cake-container">
 
-                <!-- CANDLES -->
-                <div class="candles">
-
-                    <div class="candle">
-
-                        <div class="flame"></div>
-
-                        <div class="smoke"></div>
-
-                    </div>
-
-                    <div class="candle">
-
-                        <div class="flame"></div>
-
-                        <div class="smoke"></div>
-
-                    </div>
-
-                    <div class="candle">
-
-                        <div class="flame"></div>
-
-                        <div class="smoke"></div>
-
-                    </div>
-
-                </div>
+                
 
                 <!-- CAKE -->
                 <div class="cake">
 
-                    <div class="cake-top"></div>
+                    <!-- CANDLES -->
+                    <div class="candles">
 
-                    <div class="cake-body"></div>
+                        <div class="candle">
+
+                            <div class="flame"></div>
+
+                            <div class="smoke"></div>
+
+                        </div>
+
+                        <div class="candle">
+
+                            <div class="flame"></div>
+
+                            <div class="smoke"></div>
+
+                        </div>
+
+                        <div class="candle">
+
+                            <div class="flame"></div>
+
+                            <div class="smoke"></div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TOP LAYER -->
+                    <div class="cake-layer layer-top">
+
+                        <div class="frosting"></div>
+
+                        <div class="sprinkles"></div>
+
+                    </div>
+                    
+                    <!-- MIDDLE LAYER -->
+                    <div class="cake-layer layer-middle">
+
+                        <div class="frosting"></div>
+
+                        <div class="sprinkles"></div>
+
+                    </div>
+
+                    <!-- BOTTOM LAYER -->
+                    <div class="cake-layer layer-bottom">
+
+                        <div class="frosting"></div>
+
+                        <div class="sprinkles"></div>
+
+                    </div>
 
                 </div>
-
-                <button id="blow-btn">
-                    Blow Candles 🎤
-                </button>
 
             </div>
         </section>
@@ -130,6 +182,10 @@
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/card-scene.js"></script>
+    <script src="assets/js/cake-scene.js"></script>
+    <script src="assets/js/mic-blow.js"></script>
+    <script src="assets/js/scene-transition.js"></script>
 </body>
 </html>
