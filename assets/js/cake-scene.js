@@ -1,8 +1,8 @@
 // Cake Elements
 const birthdayTitle = document.querySelector(".birthday-title");
-const blowBtn = document.getElementById("blow-btn");
-const flames = document.querySelectorAll(".flame");
-const smokes = document.querySelectorAll(".smoke");
+
+let flames = [];
+let smokes = [];
 
 // Audio
 const birthdaySong = document.getElementById("birthday-song-1");
@@ -37,16 +37,6 @@ function extinguishCandles(){
     launchConfetti();
 
 };
-
-if(blowBtn){
-
-    blowBtn.addEventListener("click", () => {
-
-        extinguishCandles();
-
-    });
-
-}
 
 // Countdown Function
 function startCountdown(){
@@ -140,3 +130,22 @@ function celebrateBirthday(){
     }, 5000);
 
 }
+
+async function loadCakeSVG(){
+
+    const response =
+        await fetch("assets/components/cake.html");
+
+    const svg =
+        await response.text();
+
+    document.getElementById(
+        "cake-svg-wrapper"
+    ).innerHTML = svg;
+
+    flames =
+        document.querySelectorAll(".flame");
+
+}
+
+loadCakeSVG();

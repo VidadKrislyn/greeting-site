@@ -1,253 +1,323 @@
 /* =========================================
-   BIRTHDAY TITLE
+   TITLE / CONTAINER
 ========================================= */
 
 .birthday-title{
     font-size:48px;
-    text-shadow:0 0 20px rgba(255,255,255,0.5);
+    text-shadow:0 0 20px rgba(255,255,255,.5);
 
     margin-top:20px;
-    margin-bottom:auto; /* pushes cake down */
+    margin-bottom:auto;
 
     flex-shrink:0;
 }
-
-/* =========================================
-   CAKE CONTAINER
-========================================= */
 
 .cake-container{
     position:relative;
 
     display:flex;
     flex-direction:column;
-
     align-items:center;
 
     height:70vh;
 }
 
-/* =========================================
-   CAKE
-========================================= */
-
-.cake{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    position:relative;
-
-    margin-top:auto; /* THIS forces cake to bottom */
-    margin-bottom:40px;
-}
-/* =========================================
-   CAKE LAYERS
-========================================= */
-
-.cake-layer{
-    position:relative;
-
-    border-radius:24px;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.15);
-
-    overflow:hidden;
+#birthday-cake-svg{
+    width:420px;
+    max-width:90vw;
+    overflow:visible;
 }
 
 /* =========================================
-   DROP ANIMATION APPLIED
+   INITIAL STATES
 ========================================= */
 
-.layer-top{
-    width:190px;
-    height:80px;
-
-    background:#ff99cc;
-
-    margin-bottom:-10px;
-
-    z-index:3;
-
-    animation:layerDrop 0.8s ease forwards;
-    animation-delay:1.6s;
-
+.layer-bottom,
+.layer-middle,
+.layer-top,
+.frosting-final,
+.frosting-blob,
+.sprinkle,
+.cream-dolls,
+.candle-group,
+.flame{
     opacity:0;
+}
+
+/* =========================================
+   CAKE LAYER DROP
+========================================= */
+
+.layer-bottom{
+    animation:dropLayer 1s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:0s;
 }
 
 .layer-middle{
-    width:260px;
-    height:85px;
-
-    background:#ff80c1;
-
-    margin-bottom:-10px;
-
-    z-index:2;
-
-    animation:layerDrop 0.8s ease forwards;
-    animation-delay:0.8s;
-
-    opacity:0;
+    animation:dropLayer 1s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:2.3s;
 }
 
-.layer-bottom{
-    width:340px;
-    height:90px;
+.layer-top{
+    animation:dropLayer 1s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:4.6s;
+}
 
-    background:#ff66b3;
+@keyframes dropLayer{
 
-    z-index:1;
+    0%{
+        opacity:0;
+        transform:
+            translateY(-260px)
+            scale(.95);
+    }
 
-    animation:layerDrop 0.8s ease forwards;
-    animation-delay:0s;
+    70%{
+        opacity:1;
+        transform:
+            translateY(20px)
+            scale(1.02);
+    }
 
-    opacity:0;
+    100%{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
 }
 
 /* =========================================
-   DROP ANIMATION
+   FROSTING FINAL
 ========================================= */
 
-@keyframes layerDrop{
+.frosting-final{
+    transform-box:fill-box;
+    transform-origin:top center;
+}
+
+/* bottom */
+
+.frosting-bottom{
+    animation:
+        frostingAppear .5s ease forwards,
+        frostingSpread 2.5s ease forwards;
+
+    animation-delay:
+        1.2s,
+        1.8s;
+}
+
+/* middle */
+
+.frosting-middle{
+    animation:
+        frostingAppear .5s ease forwards,
+        frostingSpread 2.5s ease forwards;
+
+    animation-delay:
+        3.5s,
+        4.1s;
+}
+
+/* top */
+
+.frosting-top{
+    animation:
+        frostingAppear .5s ease forwards,
+        frostingSpread 2.5s ease forwards;
+
+    animation-delay:
+        5.8s,
+        6.4s;
+}
+
+/* =========================================
+   FROSTING BLOB FALL
+========================================= */
+
+.frosting-blob{
+    transform-box:fill-box;
+    transform-origin:center top;
+}
+
+/* bottom */
+
+.frosting-blob-bottom{
+    animation:frostingFall 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:.4s;
+}
+
+/* middle */
+
+.frosting-blob-middle{
+    animation:frostingFall 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:2.7s;
+}
+
+/* top */
+
+.frosting-blob-top{
+    animation:frostingFall 1.4s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay:5s;
+}
+
+@keyframes frostingFall{
 
     0%{
         opacity:0;
 
         transform:
-            translateY(-250px);
+            translateY(-180px)
+            scaleX(.35)
+            scaleY(1.8);
     }
 
-    70%{
+    20%{
         opacity:1;
+    }
 
+    60%{
         transform:
-            translateY(15px);
+            translateY(-20px)
+            scaleX(.55)
+            scaleY(1.5);
+    }
+
+    80%{
+        transform:
+            translateY(12px)
+            scaleX(1.3)
+            scaleY(.65);
     }
 
     100%{
-        opacity:1;
+        opacity:0;
 
         transform:
-            translateY(0);
+            translateY(0)
+            scaleX(2)
+            scaleY(.2);
     }
 
 }
 
 /* =========================================
-   FROSTING
+   FROSTING APPEAR
 ========================================= */
 
-.frosting{
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:28px;
-
-    background:#ffe8d6;
-
-    border-radius:20px 20px 10px 10px;
-}
-
-/* Drips */
-.frosting::before,
-.frosting::after{
-    content:"";
-
-    position:absolute;
-
-    width:24px;
-    height:45px;
-
-    background:#ffe8d6;
-
-    border-radius:20px;
-
-    top:12px;
-}
-
-.frosting::before{
-    left:25%;
-}
-
-.frosting::after{
-    right:25%;
-}
-
-/* Frosting Animation */
 @keyframes frostingAppear{
 
     from{
         opacity:0;
 
         transform:
-            translateY(-10px);
+            scaleY(.2)
+            translateY(-20px);
     }
 
     to{
         opacity:1;
 
         transform:
+            scaleY(1)
             translateY(0);
     }
 
 }
 
 /* =========================================
-   SPRINKLES
+   FROSTING MELT
 ========================================= */
 
-.sprinkles{
-    position:absolute;
+@keyframes frostingSpread{
 
-    inset:0;
+    0%{
+        transform:
+            scaleY(1)
+            translateY(0);
+    }
 
-    opacity:0;
+    40%{
+        transform:
+            scaleY(1.03)
+            translateY(2px);
+    }
 
-    animation:
-        sprinklesPop 0.5s ease forwards;
+    100%{
+        transform:
+            scaleY(1.1)
+            translateY(8px);
+    }
 
-    animation-delay:3s;
 }
 
-/* Sprinkle Dots */
-.sprinkles::before{
-    content:"";
+/* =========================================
+   SPRINKLE RAIN
+========================================= */
 
-    position:absolute;
-    inset:0;
+.sprinkle{
+    transform-box:fill-box;
+    transform-origin:center;
 
-    background-image:
-        radial-gradient(circle,#ffd60a 4px,transparent 5px),
-        radial-gradient(circle,#00d1b2 4px,transparent 5px),
-        radial-gradient(circle,#ff4fa3 4px,transparent 5px);
-
-    background-size:
-        40px 40px;
-
-    background-position:
-        10px 10px,
-        25px 25px,
-        5px 35px;
+    animation:sprinkleDrop .8s ease forwards;
 }
 
-/* Sprinkle Animation */
-@keyframes sprinklesPop{
+.s1{ animation-delay:7s; }
+.s2{ animation-delay:7.1s; }
+.s3{ animation-delay:7.2s; }
+.s4{ animation-delay:7.3s; }
+.s5{ animation-delay:7.4s; }
+.s6{ animation-delay:7.5s; }
+.s7{ animation-delay:7.6s; }
+.s8{ animation-delay:7.7s; }
+
+@keyframes sprinkleDrop{
 
     0%{
         opacity:0;
 
-        transform:scale(0);
+        transform:
+            translateY(-220px)
+            rotate(0deg)
+            scale(.2);
+    }
+
+    60%{
+        opacity:1;
     }
 
     100%{
         opacity:1;
 
-        transform:scale(1);
+        transform:
+            translateY(0)
+            rotate(360deg)
+            scale(1);
+    }
+
+}
+
+/* =========================================
+   BUTTERCREAM
+========================================= */
+
+.cream-dolls{
+    animation:creamAppear .6s ease forwards;
+    animation-delay:8.2s;
+}
+
+@keyframes creamAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
 }
@@ -256,228 +326,118 @@
    CANDLES
 ========================================= */
 
-.candles{
-    position:absolute;
-
-    top:-80px; /* sits above cake */
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-    gap:40px;
-
-    z-index:20;
-
-    opacity:0;
-
-    animation:candlesDrop 0.8s ease forwards;
-    animation-delay:3.6s;
+.candle-group{
+    animation:candleDrop .6s ease forwards;
 }
 
-/* Candle Animation */
-@keyframes candlesDrop{
+.candle-1{ animation-delay:8.8s; }
+.candle-2{ animation-delay:9.1s; }
+.candle-3{ animation-delay:9.4s; }
+
+@keyframes candleDrop{
+
     0%{
         opacity:0;
-        transform:translateX(-50%) translateY(-20px);
+        transform:translateY(-120px);
     }
 
     100%{
         opacity:1;
-        transform:translateX(-50%) translateY(0);
+        transform:translateY(0);
     }
+
 }
 
 /* =========================================
-   CANDLE
-========================================= */
-
-.candle{
-    width:15px;
-    height:80px;
-
-    position:relative;
-
-    border-radius:10px;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            #ff85a1 0px,
-            #ff85a1 8px,
-            #ffffff 8px,
-            #ffffff 16px
-        );
-}
-
-/* =========================================
-   FLAME
+   FLAMES
 ========================================= */
 
 .flame{
-    width:20px;
-    height:30px;
-
-    background:gold;
-
-    position:absolute;
-
-    top:-30px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    border-radius:
-        50% 50% 50% 50%;
-
-    box-shadow:
-        0 0 20px gold,
-        0 0 40px orange;
-
-    opacity:0;
+    transform-box:fill-box;
+    transform-origin:center bottom;
 
     animation:
-        flameAppear 0.5s ease forwards,
-        flicker 0.15s infinite alternate;
-
-    animation-delay:
-        4.5s,
-        5s;
+        flameAppear .5s ease forwards,
+        flicker .14s infinite alternate,
+        flameFloat 2s ease-in-out infinite;
 }
 
-/* Flame Appear */
+.flame-1{
+    animation-delay:9.7s,10s,10s;
+}
+
+.flame-2{
+    animation-delay:10s,10.3s,10.3s;
+}
+
+.flame-3{
+    animation-delay:10.3s,10.6s,10.6s;
+}
+
 @keyframes flameAppear{
 
     from{
         opacity:0;
-
-        transform:
-            translateX(-50%)
-            scale(0);
+        transform:scale(.2);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateX(-50%)
-            scale(1);
+        transform:scale(1);
     }
 
 }
 
-/* Flicker */
 @keyframes flicker{
 
     from{
         transform:
-            translateX(-50%)
-            scale(1);
+            scale(1)
+            rotate(-2deg);
     }
 
     to{
         transform:
-            translateX(-50%)
-            scale(1.1);
+            scale(1.1)
+            rotate(2deg);
+    }
+
+}
+
+@keyframes flameFloat{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50%{
+        transform:
+            translateY(-3px)
+            rotate(2deg);
+    }
+
+    100%{
+        transform:
+            translateY(0)
+            rotate(-2deg);
     }
 
 }
 
 /* =========================================
-   SMOKE
+   BLOW OUT
 ========================================= */
 
-.smoke{
-    width:20px;
-    height:20px;
-
-    background:
-        rgba(200,200,200,0.7);
-
-    border-radius:50%;
-
-    position:absolute;
-
-    top:-30px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    opacity:0;
-
-    filter:blur(5px);
-}
-
-/* Flame Out */
 .flame.out{
     opacity:0 !important;
 
     transform:
-        translateX(-50%)
-        translateY(10px)
-        scale(0.2);
+        scale(.2)
+        translateY(10px);
 
-    box-shadow:none !important;
-    animation:none !important;
+    transition:.5s ease;
 
-    filter:blur(2px);
-
-    transition:0.5s ease;
-}
-
-/* Smoke Active */
-.smoke.active{
-    animation:
-        smokeUp 2s ease forwards;
-}
-
-/* Smoke Animation */
-@keyframes smokeUp{
-
-    0%{
-        opacity:0.8;
-
-        transform:
-            translateX(-50%)
-            translateY(0)
-            scale(1);
-    }
-
-    100%{
-        opacity:0;
-
-        transform:
-            translateX(-50%)
-            translateY(-50px)
-            scale(2);
-    }
-
-}
-
-/* =========================================
-   BLOW BUTTON
-========================================= */
-
-#blow-btn{
-    margin-top:40px;
-
-    padding:12px 24px;
-
-    border:none;
-
-    border-radius:30px;
-
-    background:white;
-
-    color:#7B2CBF;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    transition:0.3s ease;
-}
-
-#blow-btn:hover{
-    transform:scale(1.05);
+    filter:blur(3px);
 }
