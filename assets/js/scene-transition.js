@@ -37,11 +37,6 @@ giftBox.addEventListener("click", () => {
 // Card Scene to Cake Scene transition
 
 
-/* Show button after 10 seconds */
-setTimeout(() => {
-    continueBtn.classList.add("show");
-}, 10000);
-
 /* Go to Cake Scene */
 continueBtn.addEventListener("click", () => {
 
@@ -65,7 +60,7 @@ continueBtn.addEventListener("click", () => {
         setTimeout(() => {
 
             birthdayTitle.innerText =
-                "Ready to blow the candles?";
+                "Get ready to blow the candles!!!";
 
         }, 38000);
 
