@@ -7,7 +7,7 @@
     <defs>
 
         <!-- =========================
-             GRADIENTS
+             GRADIENTS & COLORS
         ========================== -->
 
         <linearGradient id="pinkCake" x1="0" x2="0" y1="0" y2="1">
@@ -15,9 +15,11 @@
             <stop offset="100%" stop-color="#ff5fb2"/>
         </linearGradient>
 
-        <linearGradient id="creamDrip" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="#fff4ea"/>
-            <stop offset="100%" stop-color="#ffe2cb"/>
+        <!-- Solid, rich pastry cream tone to guarantee perfect matching -->
+        <linearGradient id="creamyFrosting" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#fffdfa"/>
+            <stop offset="40%" stop-color="#fff6ed"/>
+            <stop offset="100%" stop-color="#fceade"/>
         </linearGradient>
 
         <radialGradient id="flameOuter">
@@ -31,7 +33,7 @@
             <stop offset="100%" stop-color="#ffe066"/>
         </radialGradient>
 
-        <!-- SHADOW -->
+        <!-- CAKE LAYER SHADOW -->
         <filter id="shadow">
             <feDropShadow
                 dx="0"
@@ -39,6 +41,11 @@
                 stdDeviation="8"
                 flood-opacity="0.25"
             />
+        </filter>
+
+        <!-- FROSTING VOLUME (Prevents flat/plate look) -->
+        <filter id="frostingDepth" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#b5628c" flood-opacity="0.3"/>
         </filter>
 
         <!-- FLAME GLOW -->
@@ -70,7 +77,7 @@
 
     <g class="cake-part layer-bottom">
 
-        <!-- top -->
+        <!-- top base -->
         <ellipse
             cx="250"
             cy="470"
@@ -92,49 +99,46 @@
 
         <ellipse
             cx="250"
-            cy="485"
+            cy="585"
             rx="130"
             ry="10"
             fill="#ffffff22"
         />
 
-        <!-- frosting -->
-        <g class="frosting-animation frosting-bottom-wrap">
+        <!-- Unified Blended Frosting (BOTTOM) -->
+        <g class="frosting-animation frosting-bottom-wrap" filter="url(#frostingDepth)">
 
-            <!-- FALLING ICING -->
-
+            <!-- FALLING ICING BLOB -->
             <path
                 class="frosting-blob frosting-blob-bottom"
-                fill="url(#creamDrip)"
-                d="
-                M250 330
-                C320 340 330 420 250 510
-                C170 420 180 340 250 330
-                Z
-                "
+                fill="url(#creamyFrosting)"
+                d="M250 330 C320 340 330 420 250 510 C170 420 180 340 250 330 Z"
             />
 
-            <!-- FINAL FROSTING -->
-
+            <!-- Restructured path to fully coat the top and wrap around the back rim -->
             <path
-                class="frosting-final frosting-bottom"
-                fill="url(#creamDrip)"
+                class="frosting-drips frosting-bottom"
+                fill="url(#creamyFrosting)"
                 d="
-                M80 470
-
-                C105 500 125 445 145 485
-                C160 520 185 455 205 495
-
-                C225 545 255 445 275 500
-                C295 540 320 450 340 490
-
-                C360 525 385 460 420 488
-
-                L420 470
+                M 80 470
+                C 80 430, 420 430, 420 470
+                C 420 473, 410 478, 395 478
+                C 375 478, 375 510, 365 510
+                C 355 510, 360 485, 345 485
+                C 325 485, 328 550, 315 550
+                C 300 550, 305 488, 290 488
+                C 275 488, 275 535, 265 535
+                C 255 535, 260 490, 245 490
+                C 225 490, 228 565, 215 565
+                C 200 565, 205 485, 190 485
+                C 175 485, 175 515, 165 515
+                C 155 515, 160 482, 150 482
+                C 135 482, 135 540, 125 540
+                C 110 540, 115 480, 100 480
+                C 90 480, 80 475, 80 470
                 Z
                 "
             />
-
         </g>
 
     </g>
@@ -145,6 +149,7 @@
 
     <g class="cake-part layer-middle">
 
+        <!-- top base -->
         <ellipse
             cx="250"
             cy="340"
@@ -153,6 +158,7 @@
             fill="#ffb3dd"
         />
 
+        <!-- body -->
         <rect
             x="125"
             y="340"
@@ -165,46 +171,43 @@
 
         <ellipse
             cx="250"
-            cy="485"
-            rx="130"
-            ry="10"
+            cy="445"
+            rx="100"
+            ry="8"
             fill="#ffffff22"
         />
 
-        <g class="frosting-animation frosting-middle-wrap">
+        <!-- Unified Blended Frosting (MIDDLE) -->
+        <g class="frosting-animation frosting-middle-wrap" filter="url(#frostingDepth)">
 
-            <!-- FALLING ICING -->
-
+            <!-- FALLING ICING BLOB -->
             <path
                 class="frosting-blob frosting-blob-middle"
-                fill="url(#creamDrip)"
-                d="
-                M250 200
-                C295 210 305 260 250 330
-                C195 260 205 210 250 200
-                Z
-                "
+                fill="url(#creamyFrosting)"
+                d="M250 200 C295 210 305 260 250 330 C195 260 205 210 250 200 Z"
             />
 
-            <!-- FINAL FROSTING -->
-
+            <!-- Restructured path to fully coat the top and wrap around the back rim -->
             <path
-                class="frosting-final frosting-middle"
-                fill="url(#creamDrip)"
+                class="frosting-drips frosting-middle"
+                fill="url(#creamyFrosting)"
                 d="
-                M125 340
-
-                C145 370 165 325 180 352
-                C195 400 225 315 240 360
-
-                C255 420 285 320 305 370
-                C320 395 345 330 375 355
-
-                L375 340
+                M 125 340
+                C 125 308, 375 308, 375 340
+                C 365 345, 362 420, 350 420
+                C 338 420, 342 352, 328 352
+                C 312 352, 312 405, 300 405
+                C 288 405, 292 356, 278 356
+                C 262 356, 265 435, 252 435
+                C 238 435, 242 358, 228 358
+                C 212 358, 212 385, 202 385
+                C 192 385, 195 355, 185 355
+                C 172 355, 172 415, 162 415
+                C 150 415, 155 352, 145 352
+                C 135 352, 125 345, 125 340
                 Z
                 "
             />
-
         </g>
 
     </g>
@@ -215,6 +218,7 @@
 
     <g class="cake-part layer-top">
 
+        <!-- top base -->
         <ellipse
             cx="250"
             cy="225"
@@ -223,6 +227,7 @@
             fill="#ffb3dd"
         />
 
+        <!-- body -->
         <rect
             x="155"
             y="225"
@@ -235,277 +240,93 @@
 
         <ellipse
             cx="250"
-            cy="485"
-            rx="130"
-            ry="10"
+            cy="315"
+            rx="75"
+            ry="7"
             fill="#ffffff22"
         />
 
-        <g class="frosting-animation frosting-top-wrap">
+        <!-- Unified Blended Frosting (TOP) -->
+        <g class="frosting-animation frosting-top-wrap" filter="url(#frostingDepth)">
 
-            <!-- FALLING ICING -->
-
+            <!-- FALLING ICING BLOB -->
             <path
                 class="frosting-blob frosting-blob-top"
-                fill="url(#creamDrip)"
-                d="
-                M250 100
-                C285 110 295 150 250 220
-                C205 150 215 110 250 100
-                Z
-                "
+                fill="url(#creamyFrosting)"
+                d="M250 100 C285 110 295 150 250 220 C205 150 215 110 250 100 Z"
             />
 
-            <!-- FINAL FROSTING -->
-
+            <!-- Restructured path to fully coat the top and wrap around the back rim -->
             <path
-                class="frosting-final frosting-top"
-                fill="url(#creamDrip)"
+                class="frosting-drips frosting-top"
+                fill="url(#creamyFrosting)"
                 d="
-                M155 225
-
-                C170 250 190 215 205 240
-                C220 290 245 205 260 250
-
-                C275 300 300 215 320 255
-                C330 275 338 225 345 242
-
-                L345 225
+                M 155 225
+                C 155 197, 345 197, 345 225
+                C 340 230, 338 270, 328 270
+                C 318 270, 322 235, 308 235
+                C 292 235, 292 295, 280 295
+                C 268 295, 272 236, 258 236
+                C 242 236, 242 265, 232 265
+                C 222 265, 225 236, 215 236
+                C 202 236, 202 285, 192 285
+                C 180 285, 182 234, 172 234
+                C 162 234, 155 229, 155 225
                 Z
                 "
             />
-
         </g>
 
     </g>
 
-    <!-- =========================
+<!-- =========================
          SPRINKLES
     ========================== -->
 
     <g class="sprinkles">
 
         <!-- TOP LAYER -->
-
-        <rect class="sprinkle s1"
-            x="190" y="205"
-            width="14" height="4"
-            rx="2"
-            fill="#ffdd00"
-            transform="rotate(25 190 205)"
-        />
-
-        <rect class="sprinkle s2"
-            x="220" y="200"
-            width="14" height="4"
-            rx="2"
-            fill="#00d2ff"
-            transform="rotate(-35 220 200)"
-        />
-
-        <rect class="sprinkle s3"
-            x="250" y="208"
-            width="14" height="4"
-            rx="2"
-            fill="#ff4fa3"
-            transform="rotate(15 250 208)"
-        />
-
-        <rect class="sprinkle s4"
-            x="285" y="203"
-            width="14" height="4"
-            rx="2"
-            fill="#7cff00"
-            transform="rotate(-25 285 203)"
-        />
-
-        <rect class="sprinkle s5"
-            x="205" y="230"
-            width="14" height="4"
-            rx="2"
-            fill="#ff9f1c"
-            transform="rotate(55 205 230)"
-        />
-
-        <rect class="sprinkle s6"
-            x="235" y="215"
-            width="14" height="4"
-            rx="2"
-            fill="#9b5de5"
-            transform="rotate(-45 235 215)"
-        />
-
-        <rect class="sprinkle s7"
-            x="265" y="220"
-            width="14" height="4"
-            rx="2"
-            fill="#00f5d4"
-            transform="rotate(20 265 220)"
-        />
-
-        <rect class="sprinkle s8"
-            x="295" y="228"
-            width="14" height="4"
-            rx="2"
-            fill="#ff006e"
-            transform="rotate(-60 295 228)"
-        />
+        <rect class="sprinkle s1" x="190" y="205" width="14" height="4" rx="2" fill="#ffdd00" transform="rotate(25 190 205)" />
+        <rect class="sprinkle s2" x="220" y="200" width="14" height="4" rx="2" fill="#00d2ff" transform="rotate(-35 220 200)" />
+        <rect class="sprinkle s3" x="250" y="208" width="14" height="4" rx="2" fill="#ff4fa3" transform="rotate(15 250 208)" />
+        <rect class="sprinkle s4" x="285" y="203" width="14" height="4" rx="2" fill="#7cff00" transform="rotate(-25 285 203)" />
+        <rect class="sprinkle s5" x="205" y="230" width="14" height="4" rx="2" fill="#ff9f1c" transform="rotate(55 205 230)" />
+        <rect class="sprinkle s6" x="235" y="215" width="14" height="4" rx="2" fill="#9b5de5" transform="rotate(-45 235 215)" />
+        <rect class="sprinkle s7" x="265" y="220" width="14" height="4" rx="2" fill="#00f5d4" transform="rotate(20 265 220)" />
+        <rect class="sprinkle s8" x="295" y="228" width="14" height="4" rx="2" fill="#ff006e" transform="rotate(-60 295 228)" />
+        <!-- Extra Top Layer Sprinkles -->
+        <rect class="sprinkle s25" x="175" y="215" width="14" height="4" rx="2" fill="#00f5d4" transform="rotate(40 175 215)" />
+        <rect class="sprinkle s26" x="310" y="210" width="14" height="4" rx="2" fill="#ffdd00" transform="rotate(-15 310 210)" />
+        <rect class="sprinkle s27" x="220" y="225" width="14" height="4" rx="2" fill="#7cff00" transform="rotate(10 220 225)" />
 
         <!-- MIDDLE LAYER -->
-
-        <rect class="sprinkle s9"
-            x="160" y="325"
-            width="14" height="4"
-            rx="2"
-            fill="#ffdd00"
-            transform="rotate(15 160 325)"
-        />
-
-        <rect class="sprinkle s10"
-            x="200" y="320"
-            width="14" height="4"
-            rx="2"
-            fill="#00f5d4"
-            transform="rotate(-40 200 320)"
-        />
-
-        <rect class="sprinkle s11"
-            x="240" y="330"
-            width="14" height="4"
-            rx="2"
-            fill="#ff4fa3"
-            transform="rotate(30 240 330)"
-        />
-
-        <rect class="sprinkle s12"
-            x="290" y="322"
-            width="14" height="4"
-            rx="2"
-            fill="#7cff00"
-            transform="rotate(-15 290 322)"
-        />
-
-        <rect class="sprinkle s13"
-            x="330" y="335"
-            width="14" height="4"
-            rx="2"
-            fill="#00d2ff"
-            transform="rotate(45 330 335)"
-        />
-
-        <rect class="sprinkle s14"
-            x="180" y="345"
-            width="14" height="4"
-            rx="2"
-            fill="#ff9f1c"
-            transform="rotate(-20 180 345)"
-        />
-
-        <rect class="sprinkle s15"
-            x="270" y="350"
-            width="14" height="4"
-            rx="2"
-            fill="#9b5de5"
-            transform="rotate(60 270 350)"
-        />
-
-        <rect class="sprinkle s16"
-            x="310" y="342"
-            width="14" height="4"
-            rx="2"
-            fill="#ff006e"
-            transform="rotate(-35 310 342)"
-        />
+        <rect class="sprinkle s9"  x="160" y="325" width="14" height="4" rx="2" fill="#ffdd00" transform="rotate(15 160 325)" />
+        <rect class="sprinkle s10" x="200" y="320" width="14" height="4" rx="2" fill="#00f5d4" transform="rotate(-40 200 320)" />
+        <rect class="sprinkle s11" x="240" y="330" width="14" height="4" rx="2" fill="#ff4fa3" transform="rotate(30 240 330)" />
+        <rect class="sprinkle s12" x="290" y="322" width="14" height="4" rx="2" fill="#7cff00" transform="rotate(-15 290 322)" />
+        <rect class="sprinkle s13" x="330" y="335" width="14" height="4" rx="2" fill="#00d2ff" transform="rotate(45 330 335)" />
+        <rect class="sprinkle s14" x="180" y="345" width="14" height="4" rx="2" fill="#ff9f1c" transform="rotate(-20 180 345)" />
+        <rect class="sprinkle s15" x="270" y="350" width="14" height="4" rx="2" fill="#9b5de5" transform="rotate(60 270 350)" />
+        <rect class="sprinkle s16" x="310" y="342" width="14" height="4" rx="2" fill="#ff006e" transform="rotate(-35 310 342)" />
+        <!-- Extra Middle Layer Sprinkles -->
+        <rect class="sprinkle s28" x="145" y="335" width="14" height="4" rx="2" fill="#ff4fa3" transform="rotate(-50 145 335)" />
+        <rect class="sprinkle s29" x="215" y="335" width="14" height="4" rx="2" fill="#9b5de5" transform="rotate(25 215 335)" />
+        <rect class="sprinkle s30" x="350" y="345" width="14" height="4" rx="2" fill="#00f5d4" transform="rotate(15 350 345)" />
 
         <!-- BOTTOM LAYER -->
-
-        <rect class="sprinkle s17"
-            x="120" y="450"
-            width="14" height="4"
-            rx="2"
-            fill="#9b5de5"
-            transform="rotate(35 120 450)"
-        />
-
-        <rect class="sprinkle s18"
-            x="170" y="455"
-            width="14" height="4"
-            rx="2"
-            fill="#ffdd00"
-            transform="rotate(-25 170 455)"
-        />
-
-        <rect class="sprinkle s19"
-            x="210" y="448"
-            width="14" height="4"
-            rx="2"
-            fill="#00d2ff"
-            transform="rotate(10 210 448)"
-        />
-
-        <rect class="sprinkle s20"
-            x="260" y="460"
-            width="14" height="4"
-            rx="2"
-            fill="#ff4fa3"
-            transform="rotate(-50 260 460)"
-        />
-
-        <rect class="sprinkle s21"
-            x="300" y="452"
-            width="14" height="4"
-            rx="2"
-            fill="#7cff00"
-            transform="rotate(20 300 452)"
-        />
-
-        <rect class="sprinkle s22"
-            x="350" y="462"
-            width="14" height="4"
-            rx="2"
-            fill="#ff9f1c"
-            transform="rotate(-15 350 462)"
-        />
-
-        <rect class="sprinkle s23"
-            x="145" y="475"
-            width="14" height="4"
-            rx="2"
-            fill="#00f5d4"
-            transform="rotate(45 145 475)"
-        />
-
-        <rect class="sprinkle s24"
-            x="325" y="480"
-            width="14" height="4"
-            rx="2"
-            fill="#ff006e"
-            transform="rotate(-60 325 480)"
-        />
-
-    </g>
-    
-    <!-- =========================
-         BUTTERCREAM
-    ========================== -->
-
-    <g class="cream-dolls">
-
-        <g class="cream-row">
-
-            <path d="M105 440 Q120 400 135 440 Z"
-                fill="#ffe8a3"/>
-
-            <path d="M175 440 Q190 400 205 440 Z"
-                fill="#ffe8a3"/>
-
-            <path d="M245 440 Q260 400 275 440 Z"
-                fill="#ffe8a3"/>
-
-            <path d="M315 440 Q330 400 345 440 Z"
-                fill="#ffe8a3"/>
-
-        </g>
+        <rect class="sprinkle s17" x="120" y="450" width="14" height="4" rx="2" fill="#9b5de5" transform="rotate(35 120 450)" />
+        <rect class="sprinkle s18" x="170" y="455" width="14" height="4" rx="2" fill="#ffdd00" transform="rotate(-25 170 455)" />
+        <rect class="sprinkle s19" x="210" y="448" width="14" height="4" rx="2" fill="#00d2ff" transform="rotate(10 210 448)" />
+        <rect class="sprinkle s20" x="260" y="460" width="14" height="4" rx="2" fill="#ff4fa3" transform="rotate(-50 260 460)" />
+        <rect class="sprinkle s21" x="300" y="452" width="14" height="4" rx="2" fill="#7cff00" transform="rotate(20 300 452)" />
+        <rect class="sprinkle s22" x="350" y="462" width="14" height="4" rx="2" fill="#ff9f1c" transform="rotate(-15 350 462)" />
+        <rect class="sprinkle s23" x="145" y="475" width="14" height="4" rx="2" fill="#00f5d4" transform="rotate(45 145 475)" />
+        <rect class="sprinkle s24" x="325" y="480" width="14" height="4" rx="2" fill="#ff006e" transform="rotate(-60 325 480)" />
+        <!-- Extra Bottom Layer Sprinkles -->
+        <rect class="sprinkle s31" x="95"  y="460" width="14" height="4" rx="2" fill="#ffdd00" transform="rotate(10 95 460)" />
+        <rect class="sprinkle s32" x="190" y="465" width="14" height="4" rx="2" fill="#7cff00" transform="rotate(-30 190 465)" />
+        <rect class="sprinkle s33" x="235" y="455" width="14" height="4" rx="2" fill="#ff9f1c" transform="rotate(40 235 455)" />
+        <rect class="sprinkle s34" x="380" y="470" width="14" height="4" rx="2" fill="#ff4fa3" transform="rotate(-20 380 470)" />
 
     </g>
 
@@ -514,119 +335,29 @@
     ========================== -->
 
     <g class="candles">
-
-        <!-- candle 1 -->
         <g class="candle-group candle-1">
-
-            <rect
-                x="210"
-                y="120"
-                width="16"
-                height="90"
-                rx="10"
-                fill="url(#candleStripe)"
-            />
-
-            <!-- flame -->
+            <rect x="210" y="120" width="16" height="90" rx="10" fill="url(#candleStripe)" />
             <g class="flame flame-1">
-
-                <path
-                    d="
-                    M214 80
-                    C225 95 228 110 214 122
-                    C200 110 203 95 214 80
-                    "
-                    fill="url(#flameOuter)"
-                    filter="url(#flameGlow)"
-                />
-
-                <path
-                    d="
-                    M214 92
-                    C220 102 220 108 214 114
-                    C208 108 208 102 214 92
-                    "
-                    fill="url(#flameInner)"
-                />
-
+                <path d="M214 80 C225 95 228 110 214 122 C200 110 203 95 214 80 Z" fill="url(#flameOuter)" filter="url(#flameGlow)" />
+                <path d="M214 92 C220 102 220 108 214 114 C208 108 208 102 214 92 Z" fill="url(#flameInner)" />
             </g>
-
         </g>
 
-        <!-- candle 2 -->
         <g class="candle-group candle-2">
-
-            <rect
-                x="242"
-                y="105"
-                width="16"
-                height="105"
-                rx="10"
-                fill="url(#candleStripe)"
-            />
-
+            <rect x="242" y="105" width="16" height="105" rx="10" fill="url(#candleStripe)" />
             <g class="flame flame-2">
-
-                <path
-                    d="
-                    M250 65
-                    C262 82 264 95 250 108
-                    C236 95 238 82 250 65
-                    "
-                    fill="url(#flameOuter)"
-                    filter="url(#flameGlow)"
-                />
-
-                <path
-                    d="
-                    M250 78
-                    C256 88 256 94 250 100
-                    C244 94 244 88 250 78
-                    "
-                    fill="url(#flameInner)"
-                />
-
+                <path d="M250 65 C262 82 264 95 250 108 C236 95 238 82 250 65 Z" fill="url(#flameOuter)" filter="url(#flameGlow)" />
+                <path d="M250 78 C256 88 256 94 250 100 C244 94 244 88 250 78 Z" fill="url(#flameInner)" />
             </g>
-
         </g>
 
-        <!-- candle 3 -->
         <g class="candle-group candle-3">
-
-            <rect
-                x="274"
-                y="120"
-                width="16"
-                height="90"
-                rx="10"
-                fill="url(#candleStripe)"
-            />
-
+            <rect x="274" y="120" width="16" height="90" rx="10" fill="url(#candleStripe)" />
             <g class="flame flame-3">
-
-                <path
-                    d="
-                    M282 80
-                    C293 95 296 110 282 122
-                    C268 110 271 95 282 80
-                    "
-                    fill="url(#flameOuter)"
-                    filter="url(#flameGlow)"
-                />
-
-                <path
-                    d="
-                    M282 92
-                    C288 102 288 108 282 114
-                    C276 108 276 102 282 92
-                    "
-                    fill="url(#flameInner)"
-                />
-
+                <path d="M282 80 C293 95 296 110 282 122 C268 110 271 95 282 80 Z" fill="url(#flameOuter)" filter="url(#flameGlow)" />
+                <path d="M282 92 C288 102 288 108 282 114 C276 108 276 102 282 92 Z" fill="url(#flameInner)" />
             </g>
-
         </g>
-
     </g>
 
 </svg>
