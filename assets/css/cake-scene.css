@@ -273,6 +273,26 @@
 .s7{ animation-delay:7.6s; }
 .s8{ animation-delay:7.7s; }
 
+/* Middle Layer Delays */
+.s9  { animation-delay: 7.8s; }
+.s10 { animation-delay: 7.9s; }
+.s11 { animation-delay: 7.10s; }
+.s12 { animation-delay: 7.11s; }
+.s13 { animation-delay: 7.12s; }
+.s14 { animation-delay: 7.13s; }
+.s15 { animation-delay: 7.14s; }
+.s16 { animation-delay: 7.15s; }
+
+/* Bottom Layer Delays */
+.s17 { animation-delay: 7.16s; }
+.s18 { animation-delay: 7.17s; }
+.s19 { animation-delay: 7.18s; }
+.s20 { animation-delay: 7.19s; }
+.s21 { animation-delay: 7.20s; }
+.s22 { animation-delay: 7.21s; }
+.s23 { animation-delay: 7.22s; }
+.s24 { animation-delay: 7.23s; }
+
 @keyframes sprinkleDrop{
 
     0%{
