@@ -23,7 +23,7 @@ function launchConfetti(){
 
 // FULL SCREEN FIREWORKS LOOP (Utilizes your loaded canvas-confetti bundle)
 function startFireworksDisplay() {
-    const duration = 25 * 1000; // Run massive skyburst cycles for 25 seconds
+    const duration = 65 * 1000; // Run massive skyburst cycles for 25 seconds
     const animationEnd = Date.now() + duration;
     
     // Confetti structural color options mapping to firework minerals
@@ -62,8 +62,8 @@ function startFireworksDisplay() {
 
 // BALLOONS FLYING POPULATION GENERATOR
 function releaseFlyingBalloons() {
-    const totalBalloonsCount = 35; 
-    const neonPalettes = ["#FF5C97", "#FF7597", "#E0AAFF", "#C77DFF", "#9D4EDD", "#3A86FF", "#FFBE0B", "#FF006E"];
+    const totalBalloonsCount = 180; 
+    const neonPalettes = ["#ff006e", "#ffbe0b", "#3a86ff", "#8338ec", "#fb5607", "#00f5d4",  "#A2D2FF", "#CAFFBF"];
 
     for (let i = 0; i < totalBalloonsCount; i++) {
         setTimeout(() => {
@@ -79,7 +79,7 @@ function releaseFlyingBalloons() {
             // Inject custom element styling variables
             balloon.style.left = `${randomXPosition}vw`;
             balloon.style.color = randomColor;
-            balloon.style.backgroundColor = randomColor;
+            balloon.style.background = `radial-gradient(circle at 30% 30%, white 0%, ${randomColor} 35%, ${randomColor} 100%)`;
             balloon.style.transform = `scale(${randomScale})`;
             balloon.style.animationDuration = `${variantSpeed}s`;
 
@@ -137,7 +137,7 @@ function celebrateBirthday(){
 
     extinguishCandles();
 
-    birthdayTitle.innerText = "YAYYYYY 🎉";
+    birthdayTitle.innerText = "HAPPY BIRTHDAY BITCHHH 🎉";
 
     // KICK OFF NEW VISUAL CELEBRATIONS INSTANTLY AT BLOWOUT!
     startFireworksDisplay();
