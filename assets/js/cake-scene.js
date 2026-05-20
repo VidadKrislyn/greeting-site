@@ -62,7 +62,7 @@ function startFireworksDisplay() {
 
 // BALLOONS FLYING POPULATION GENERATOR
 function releaseFlyingBalloons() {
-    const totalBalloonsCount = 180; 
+    const totalBalloonsCount = 170; 
     const neonPalettes = ["#ff006e", "#ffbe0b", "#3a86ff", "#8338ec", "#fb5607", "#00f5d4",  "#A2D2FF", "#CAFFBF"];
 
     for (let i = 0; i < totalBalloonsCount; i++) {
@@ -97,13 +97,42 @@ function releaseFlyingBalloons() {
 function extinguishCandles(){
     flames.forEach(flame => {
         flame.classList.add("out");
-    });
 
-    smokes.forEach(smoke => {
-        smoke.classList.add("active");
+        createSmokeTrail(flame);
     });
 
     launchConfetti();
+}
+
+// Generates independent smoke trails directly over each candle's wick coordinates
+function createSmokeTrail(flameElement) {
+    const smoke = document.createElement("div");
+    smoke.className = "html-smoke";
+
+    // Grab the layout bounding box of the cake container to use as an absolute anchor point
+    const container = document.querySelector(".cake-container");
+    const containerRect = container.getBoundingClientRect();
+    const flameRect = flameElement.getBoundingClientRect();
+
+    // Calculate exact pixel offsets relative to the parent box positioning
+    const leftOffset = (flameRect.left - containerRect.left) + (flameRect.width / 2) - 2;
+    const topOffset = (flameRect.top - containerRect.top) - 10; // Sits smoke right on the wick tip
+
+    smoke.style.left = `${leftOffset}px`;
+    smoke.style.top = `${topOffset}px`;
+
+    // Append into container layout tree
+    container.appendChild(smoke);
+
+    // Force a tiny layout redraw frame, then apply the drift animation class
+    requestAnimationFrame(() => {
+        smoke.classList.add("drift");
+    });
+
+    // Clean up node directly from the DOM tree once the smoke animation completes
+    setTimeout(() => {
+        smoke.remove();
+    }, 10000);
 }
 
 // Countdown Function

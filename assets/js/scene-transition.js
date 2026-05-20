@@ -38,30 +38,33 @@ giftBox.addEventListener("click", () => {
 
 
 // =========================================================================
-// CARD SCENE TO CAKE SCENE TRANSITION (WITH CLOSING INTERMISSION)
+// CARD SCENE TO CAKE SCENE TRANSITION (SLOW CARD FADE)
 // =========================================================================
 
 /* Go to Cake Scene */
 continueBtn.addEventListener("click", () => {
-    // 1. Instantly hide the continue button so it doesn't float over the closing cover
+    // 1. Instantly hide the button so it doesn't linger on screen
     continueBtn.classList.remove("show");
 
-    // 2. Snap the birthday card shut! (This triggers your card-scene.css 2s transition backwards)
+    // 2. Snap the birthday card shut (takes 2 seconds)
     birthdayCard.classList.remove("open");
 
-    // 3. Wait exactly 2000ms (2 seconds) for the cover to finish folding back to center
+    // 3. Wait exactly 2000ms for the cover to finish folding back to center
     setTimeout(() => {
         
-        // 4. Now fade out the entire card desk area background scene
-        cardScene.classList.add("fade-out");
+        // 4. Find the card wrapper and trigger our slow fade out
+        const cardWrapper = document.querySelector(".card-wrapper");
+        if (cardWrapper) {
+            cardWrapper.classList.add("slow-card-fade");
+        }
 
-        // 5. Short 800ms fade buffer to wipe the screen clean before mounting cake assets
+        // 5. Wait exactly 2000ms for the card to completely vanish into thin air
         setTimeout(() => {
 
+            // 6. Clean background switch straight to the Cake Scene
             cardScene.classList.add("hidden");
-            cardScene.classList.remove("fade-out");
+            if (cardWrapper) cardWrapper.classList.remove("slow-card-fade");
 
-            // 6. Mount and display Cake Scene (This triggers your cake stagger loops instantly!)
             cakeScene.classList.remove("hidden");
             cakeScene.classList.add("fade-in");
 
@@ -69,17 +72,17 @@ continueBtn.addEventListener("click", () => {
             birthdaySong.volume = 0.5;
             birthdaySong.play();
 
-            /* 38 seconds (6 sec before end) */
+            /* 35 seconds (9 sec before end) */
             setTimeout(() => {
                 birthdayTitle.innerText = "Get ready to blow the candles!!!";
-            }, 38000);
+            }, 35000);
 
-            /* 41 seconds (3 sec before end) */
+            /* 38 seconds (6 sec before end) */
             setTimeout(() => {
                 startCountdown();
-            }, 41000);
+            }, 38000);
 
-        }, 2000);
+        }, 2000); // 2000ms fade duration for the card wrapper
 
-    }, 2000); // Links perfectly with the 2s transition duration in card-scene.css
+    }, 2000); // Wait 2s for the card to snap shut first
 });

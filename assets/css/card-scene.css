@@ -198,3 +198,14 @@
     transform: translateY(-2px);
     color: #3C096C;
 }
+
+/* =========================================
+   CLEAN SIMPLIFIED SLOW FADE TRANSITION
+========================================= */
+
+/* Applied to the card wrapper to fade it out slowly */
+.card-wrapper.slow-card-fade {
+    /* Transitions over 2 full seconds */
+    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+}
