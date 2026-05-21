@@ -130,7 +130,7 @@
     <div id="loader-wrapper">
     <div class="liquid-loader">
         <div class="loading-text">
-        Preparing your surprise<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+        Preparing your gift...<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
         </div>
 
         <div class="loader-track">
@@ -173,7 +173,11 @@
         <section id="gift-scene" class="scene">
             <h1>Welcome!</h1> 
             <h4>Click the gift to open</h4>
-            <img src="assets/Gift.gif" id="gift-box" alt="Gift Box" style="width:128px;height:128px;">
+            
+            <!-- Added this smooth animation wrapper 👇 -->
+            <div id="gift-container">
+                <img src="assets/Gift.gif" id="gift-box" alt="Gift Box">
+            </div>
         </section>
         <section id="card-scene" class="scene hidden">
             <div class="card-wrapper">
@@ -183,9 +187,9 @@
                 <!-- MESSAGE PAGE -->
                 <div class="message-page">
                     <div class="reveal-text-box type-right-box">
-                        <p>I know this year didn't start well for you, but I still hope it gives you softer days, genuine happiness, good health, and moments that make you smile without forcing it. <br> <br>
-                        And if things ever get heavy, I hope that you know that I'll always be here whenever you need comfort, someone to listen, or even just someone to stay with you quitely. <br> <br>
-                        Also... I hope you can still endure my silliness, even when it gets a little annoying sometimes or accidentally makes you mad. <br> <br>
+                        <p>I know this year didn't start well for you, but I still hope it gives you softer days, genuine happiness, good health, and moments that make you smile without forcing it.<br><br>
+                        And if things ever get heavy, I hope that you know that I'll always be here whenever you need comfort, someone to listen, or even just someone to stay with you quitely.<br><br>
+                        Also... I hope you can still endure my silliness, even when it gets a little annoying sometimes or accidentally makes you mad.<br><br>
                         Most importantly, I hope you enjoy your special day.</p>
                     </div>
                     <button id="continue-btn" class="hidden-btn">
@@ -197,18 +201,14 @@
                 <div class="card-cover">
 
                     <!-- FRONT -->
-                    <div class="cover-front">
-
-                        <h1>For You 💌</h1>
-
-                    </div>
+                    <div class="cover-front"></div>
 
                     <!-- BACK -->
                     <div class="cover-back">
                         <div class="reveal-text-box type-left-box">
-                            <p> Dear Stubborn Bitch, <br> <br>I know this isn't the fanciest gift, and maybe the colors and designs are a little messy, but I still wanted to give you something on your birthday. <br> <br>
-                            I may not be the most romantic person, but birthday gifts mean a lot to me. I can't give you material things because of the distance between us, and I don't have the resources to buy you anything, but I hope you'll still appreciate what I made for you. <br> <br> 
-                            Thank you for being part of my days - for the laughs, the calls, the games, and the comfort you bring even from far away. </p>
+                            <p> Hey Bitch, <br><br>I know this isn't the fanciest gift, and maybe the colors and designs are a little messy, but I still wanted to give you something on your birthday.<br><br>
+                            I may not be the most romantic person, but birthday gifts mean a lot to me. I can't give you material things because of the distance between us, and I don't have the resources to buy you anything, but I hope you'll still appreciate what I made for you.<br><br> 
+                            Thank you for being part of my days - for the laughs, the calls, the games, and the comfort you bring even from far away.</p>
                         </div>
                     </div>
 

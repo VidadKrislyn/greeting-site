@@ -1,25 +1,100 @@
-#gift-box{
-    width: 180px;
-    cursor: pointer;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,0.4));
+/* =========================================
+   LOCAL FONT LOADING
+========================================= */
+@font-face {
+    font-family: 'Great Vibes Local';
+    src: url('../fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    transition: transform 0.3s ease;
+@font-face {
+    font-family: 'Spicy Rice Local';
+    src: url('../fonts/SpicyRice-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================
+   GIFT SCENE DEAD CENTER LAYOUT
+========================================= */
+#gift-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Removed height: 100vh so it properly inherits and matches main sizing */
+    width: 100%;
+    height: 100%; 
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#gift-scene h1 {
+    font-family: 'Great Vibes Local', cursive, sans-serif;
+    font-size: 100px;         /* Made much bigger (was 72px) */
+    color: white;
+    letter-spacing: 2px;
+    margin-top: -30px;
+    margin-bottom: 5px;    /* Negative margin pulls h4 closer to cursive tails for a tighter look */
+    
+    text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.4),
+        -1px -1px 0px rgba(255, 255, 255, 0.4),
+        0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+#gift-scene h4 {
+    font-family: 'Spicy Rice Local', system-ui, sans-serif;
+    font-size: 32px;         /* Made much bigger (was 22px) */
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.5px;
+    
+    margin-top: 0;
+    margin-bottom: 10px;     /* Comfortable breathing room before the GIF */
+}
+
+/* =========================================
+   GIFT ANIMATION WRAPPER (HANDLES THE FLOAT)
+========================================= */
+#gift-container {
+    display: inline-block;
+    /* The continuous floating animation only handles moving up and down now */
     animation: float 2s ease-in-out infinite;
 }
-#gift-box:hover{
-    transform: scale(1.1);
+
+/* =========================================
+   THE GIF BOX (HANDLES JUST THE HOVER SCALE)
+========================================= */
+#gift-box {
+    width: 200px; 
+    height: auto; 
+    cursor: pointer;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.4));
+    
+    /* Pull out all variables/animations here to guarantee ultimate 60fps smoothness */
+    display: block;
+    will-change: transform; 
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
 }
 
-@keyframes float{
-    0%{
-        transform: translateY(0px);
-    }
+/* Clean, isolated scaling that doesn't conflict with any keyframes! */
+#gift-box:hover {
+    transform: scale(1.15) rotate(2deg); /* Added a tiny 2-degree wiggle tilt to make it extra playful */
+    filter: drop-shadow(0 0 35px rgba(255,255,255,0.65));
+}
 
-    50%{
-        transform: translateY(-10px);
+/* =========================================
+   ISOLATED ANIMATION TIMELINE
+========================================= */
+@keyframes float {
+    0% { 
+        transform: translateY(0px); 
     }
-
-    100%{
-        transform: translateY(0px);
+    50% { 
+        transform: translateY(-14px); 
+    }
+    100% { 
+        transform: translateY(0px); 
     }
 }

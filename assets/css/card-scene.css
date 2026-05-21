@@ -1,4 +1,14 @@
 /* =========================================
+   LOCAL FONT LOADING FOR EMILYS CANDY
+========================================= */
+@font-face {
+    font-family: 'Emilys Candy Local';
+    src: url('../fonts/EmilysCandy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================
    CARD WRAPPER & DESK SPACE
 ========================================= */
 .card-wrapper {
@@ -14,7 +24,6 @@
 ========================================= */
 .birthday-card {
     position: relative;
-    /* Expanded dimensions to perfectly hold your long paragraphs */
     width: 850px; 
     height: 480px;
     
@@ -27,36 +36,6 @@
 /* Open State Shift */
 .birthday-card.open {
     transform: translateX(0);
-}
-
-/* =========================================
-   RIGHT SIDE (STATIONARY MESSAGE PAGE)
-========================================= */
-.message-page {
-    position: absolute;
-    width: 425px; /* 850px / 2 */
-    height: 100%;
-    right: 0;
-    top: 0;
-    
-    background: #FFF9FF;
-    color: #3C096C;
-    border-radius: 0 15px 15px 0;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes button to bottom, text centered */
-    align-items: flex-start;
-    text-align: left; /* Left-aligned for beautiful letter readability */
-    padding: 40px 35px;
-    
-    background-image: linear-gradient(
-        to right, 
-        rgba(0, 0, 0, 0.06) 0%, 
-        rgba(0, 0, 0, 0.01) 8%, 
-        rgba(255, 255, 255, 0) 25%
-    );
-    border-left: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /* =========================================
@@ -98,7 +77,10 @@
    FRONT COVER (CLOSED)
 ========================================= */
 .cover-front {
-    background: linear-gradient(135deg, #FF5C97 0%, #FF4D8D 50%, #FF7597 100%);
+    background-image: url('../cover.jpg'); 
+    background-size: 105%; 
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 0 15px 15px 0;
     color: white;
     justify-content: center;
@@ -112,45 +94,65 @@
    BACK COVER (INSIDE LEFT PAGE)
 ========================================= */
 .cover-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-    
-    background: #FFF9FF; 
+    /* 1. CONTINUOUS LANDSCAPE DESIGN (LEFT SIDE) */
+    background-image: 
+        linear-gradient(to left, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.01) 8%, rgba(255, 255, 255, 0) 20%), 
+        url('../card-background.jpg'); 
+    background-size: 850px 480px; 
+    background-position: left top; 
+    background-color: rgba(255, 249, 255, 0.85); 
+    background-blend-mode: overlay;
+
     border-radius: 15px 0 0 15px;
     transform: rotateY(180deg);
-    color: #3C096C; 
-    
-    /* CHANGED HERE: Aligns the message to the top to match the right page */
+    color: black; 
     justify-content: flex-start; 
     align-items: flex-start;
     text-align: left;
-    
-    /* Unified padding matching the right side perfectly */
     padding: 40px 35px; 
-    
-    background-image: linear-gradient(
-        to left, 
-        rgba(0, 0, 0, 0.06) 0%, 
-        rgba(0, 0, 0, 0.01) 8%, 
-        rgba(255, 255, 255, 0) 20%
-    );
     border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================
+   RIGHT SIDE (STATIONARY MESSAGE PAGE)
+========================================= */
+.message-page {
+    position: absolute;
+    width: 425px; /* 850px / 2 */
+    height: 100%;
+    right: 0;
+    top: 0;
+    
+    /* 2. CONTINUOUS LANDSCAPE DESIGN (RIGHT SIDE) */
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.01) 8%, rgba(255, 255, 255, 0) 25%), 
+        url('../card-background.jpg'); 
+    background-size: 850px 480px; 
+    background-position: right top; 
+    background-color: rgba(255, 249, 255, 0.85); 
+    background-blend-mode: overlay;
+
+    color: black;
+    border-radius: 0 15px 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: flex-start;
+    text-align: left; 
+    padding: 40px 35px;
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /* =========================================
    TYPOGRAPHY CONFIGURATIONS
 ========================================= */
 .reveal-text-box {
+    font-family: 'Emilys Candy Local', sans-serif; /* Applied your new font here */
     width: 100%;
-    font-size: 14.5px;
+    font-size: 15px; /* Slightly adjusted down because whimsical fonts can run large */
     line-height: 1.6;
     font-weight: 400;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.8px;
 }
 
 .reveal-text-box p {
@@ -163,7 +165,7 @@
 .typing-cursor {
     display: inline-block;
     width: 2px;
-    height: 1em; /* Matches current font-size dynamically */
+    height: 1em; 
     background-color: #3C096C;
     margin-left: 2px;
     vertical-align: middle;
@@ -179,7 +181,7 @@
    CONTINUE BUTTON
 ========================================= */
 .hidden-btn {
-    align-self: flex-end; /* Locks button cleanly to the bottom right layout corner */
+    align-self: flex-end; 
     background: transparent;
     border: none;
     color: rgba(60, 9, 108, 0.6);
@@ -202,10 +204,7 @@
 /* =========================================
    CLEAN SIMPLIFIED SLOW FADE TRANSITION
 ========================================= */
-
-/* Applied to the card wrapper to fade it out slowly */
 .card-wrapper.slow-card-fade {
-    /* Transitions over 2 full seconds */
     transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
 }

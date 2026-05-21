@@ -166,7 +166,7 @@ function celebrateBirthday(){
 
     extinguishCandles();
 
-    birthdayTitle.innerText = "HAPPY BIRTHDAY BITCHHH 🎉";
+    birthdayTitle.innerText = "HAPPY BIRTHDAY 🎉";
 
     // KICK OFF NEW VISUAL CELEBRATIONS INSTANTLY AT BLOWOUT!
     startFireworksDisplay();
